@@ -52,4 +52,8 @@ docs/_build/
 # Bootstrap
 static/
 
+# Virtual env
 venv/
+
+# Database files
+*.db
