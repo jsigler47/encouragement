@@ -1,0 +1,71 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Reasons</title>
+  <meta name="description" content="A website that gives reasons to live">
+  <meta name="author" content="Dylan Sigler">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <style>
+    html,
+    body{
+      height: 100%;
+    }
+    
+    .container{
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lead{
+      color: #97C6B0;
+      margin: 40px;
+    }
+
+    .cover-heading{
+      color: #FEE3CD;
+    }
+
+    .btn{
+      background-color: #F4ABA4;
+    }
+    .btn:hover{
+      background-color: #ad7e79fa;
+      
+    }
+  </style>
+</head>
+<body class="text-center" style="background-color: #515C74;">
+  <div class="container">
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Discover your reason</h1>
+      <p class="lead" id="reason_text">Example text</p>
+      <p class="lead">
+        <button type="button" class="btn btn-lg btn-outline-secondary" onclick="changeText();">Click me</button>
+      </p>
+    </main>
+  </div>
+  <script>
+    function changeText(){
+      var curr_reason = document.getElementById('reason_text').innerHTML;
+      var reasons = [
+        "You're not as alone as you feel.",
+        "It's hard to see solutions when in distress",
+        "Situations can change, emotions aren't permanent",
+        "Your mistakes don't define you.",
+      ];
+      var new_reason = reasons[Math.floor(Math.random() * reasons.length)];
+      while(new_reason == curr_reason){
+        new_reason = reasons[Math.floor(Math.random() * reasons.length)];
+      }
+      document.getElementById('reason_text').innerHTML = new_reason;
+    }
+  </script>
+</body>
+
+</html>
