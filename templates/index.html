@@ -9,6 +9,10 @@
   <meta name="author" content="Dylan Sigler">
 
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  </script>
   <style>
     html,
     body{
@@ -33,6 +37,7 @@
 
     .btn{
       background-color: #F4ABA4;
+      color: white;
     }
     .btn:hover{
       background-color: #ad7e79fa;
@@ -44,7 +49,7 @@
   <div class="container">
     <main role="main" class="inner cover">
       <h1 class="cover-heading">Discover your reason</h1>
-      <p class="lead" id="reason_text">Example text</p>
+      <p class="lead" id="reason_text">You are a light in the world.</p>
       <p class="lead">
         <button type="button" class="btn btn-lg btn-outline-secondary" onclick="changeText();">Click me</button>
       </p>
@@ -52,18 +57,11 @@
   </div>
   <script>
     function changeText(){
-      var curr_reason = document.getElementById('reason_text').innerHTML;
-      var reasons = [
-        "You're not as alone as you feel.",
-        "It's hard to see solutions when in distress",
-        "Situations can change, emotions aren't permanent",
-        "Your mistakes don't define you.",
-      ];
-      var new_reason = reasons[Math.floor(Math.random() * reasons.length)];
-      while(new_reason == curr_reason){
-        new_reason = reasons[Math.floor(Math.random() * reasons.length)];
-      }
-      document.getElementById('reason_text').innerHTML = new_reason;
+      $.getJSON($SCRIPT_ROOT + '/_get_reason',{
+        reason: document.getElementById('reason_text').innerHTML
+      }, function(data) {
+        $('#reason_text').text(data);
+      });      
     }
   </script>
 </body>
