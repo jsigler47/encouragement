@@ -1,0 +1,46 @@
+.container{
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading{
+  font-size: 10em;
+  font-weight: bolder;
+  color: #3D405B;
+  margin: 40px;
+}
+
+.statement{
+  margin: 1.5em;
+  width: 70%;
+  font-size: 3em;
+  color: #E07A5F;
+}
+
+// Size can also be negative; see how it's smaller than the element
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+.row {
+  justify-content: center;
+  display: flex;
+}
+
+button {
+  font-size: 1.2em;
+  width: 15%;
+  color: #81B29A;
+  transition: 0.25s;
+  background: none;
+  border: 2px solid;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+}
